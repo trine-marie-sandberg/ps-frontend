@@ -1,8 +1,10 @@
+import { PageWrap } from "../../components/pagewrapper/style";
+
 export default function TasksPage() {
 
     return(
-        <div>
+        <PageWrap>
             <h1>Tasks</h1>
-        </div>
+        </PageWrap>
     )
 }
