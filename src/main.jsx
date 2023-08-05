@@ -8,8 +8,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import tasksReducer from './features/tasksSlice.js';
 import { tasksFetch } from './features/tasksSlice.js';
-
-//https://www.youtube.com/watch?v=wB6hjNHe_ps&list=PL63c_Ws9ecIRnNHCSqmIzfsMAYZrN71L6&index=7 
+ 
 const store = configureStore({
   reducer: {
     tasks: tasksReducer,
