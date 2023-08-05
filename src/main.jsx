@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import Theme from './styles/theme.jsx';
 import GlobalStyle from './styles/global.jsx';
+
 //Redux logic
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
@@ -14,7 +15,7 @@ const store = configureStore({
     tasks: tasksReducer,
   }
 });
-store.dispatch(tasksFetch())
+store.dispatch(tasksFetch());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
