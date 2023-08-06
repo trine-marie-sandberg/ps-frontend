@@ -3,36 +3,43 @@ import axios from "axios";
 
 const initialState = {
     tasks: [],
-    status: null
+    status: null,
+    loading: "loading content",
+    error: "An error occured",
 }
 //createAsyncThunk() accepts 3 paramenters: action-type, function, options
 export const tasksFetch = createAsyncThunk(
     "tasks/tasksFetch",
-    async () => {
-        const response = await axios.get("http://10.0.0.68:5000/tasks");
-        return response?.data
+    async (id=null, { rejectWithValue }) => {
+        try {
+            const response = await axios.get("http://10.0.0.68:5000/tasks");
+            return response?.data
+        } catch(error) {
+            return rejectWithValue(error.response.data);
+        } 
     }
 );
 
 const tasksSlice = createSlice({
+
     name: "tasks",
     initialState,
     reducers: {},
-    extraReducers: {
-        [tasksFetch.pending]: (state, action) => {
-            //redux-toolkit is using library immer, and won't mutate out state
-            state.status = "pending"
-        },
-        [tasksFetch.fulfilled]: (state, action) => {
-            state.status = "sucsess"
-            state.tasks = action.payload
-        },
-        [tasksFetch.rejected]: (state, action) => {
-            state.status = "rejected"
-            state.tasks = action.payload
-        }
-    }
-
+    // extraReducers: {
+    //     [tasksFetch.pending]: (state, action) => {
+    //         //redux-toolkit bruker library immer, og mutater ikke state. ExtraReducers trengs ikke lenger pga. RTK query. Lar det stå for nå mens jeg lærer meg det.
+    //         state.status = "pending"
+    //         state.loading = action.payload
+    //     },
+    //     [tasksFetch.fulfilled]: (state, action) => {
+    //         state.status = "sucsess"
+    //         state.tasks = action.payload
+    //     },
+    //     [tasksFetch.rejected]: (state, action) => {
+    //         state.status = "rejected"
+    //         state.error = action.payload
+    //     }
+    // }
 });
 export default tasksSlice.reducer;
 
