@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const tasksApi = createApi({
     reducerPath: "tasksApi",
-    baseQuery: fetchBaseQuery({baseUrl: "http://10.0.0.68:5000"}),
+    baseQuery: fetchBaseQuery({baseUrl: "http://10.0.0.68:5000/"}),
     endpoints: (builder) => ({
         getAllTasks: builder.query({
             query: () => "tasks",

@@ -12,7 +12,7 @@ export const tasksFetch = createAsyncThunk(
     "tasks/tasksFetch",
     async (id=null, { rejectWithValue }) => {
         try {
-            const response = await axios.get("http://10.0.0.68:5000/tasks");
+            const response = await axios.get(baseUrl + "tasks");
             return response?.data
         } catch(error) {
             return rejectWithValue(error.response.data);
@@ -27,7 +27,7 @@ const tasksSlice = createSlice({
     reducers: {},
     // extraReducers: {
     //     [tasksFetch.pending]: (state, action) => {
-    //         //redux-toolkit bruker library immer, og mutater ikke state. ExtraReducers trengs ikke lenger pga. RTK query. Lar det stå for nå mens jeg lærer meg det.
+    //         //💡redux-toolkit bruker library immer, og mutater ikke state. ExtraReducers trengs ikke lenger pga. RTK query. Lar det stå for nå mens jeg lærer meg det.
     //         state.status = "pending"
     //         state.loading = action.payload
     //     },
