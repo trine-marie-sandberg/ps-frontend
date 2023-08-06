@@ -26,9 +26,14 @@ const TasksPage = () => {
                 <>
                   <CardsWrapp>{data?.map(data => 
                   <div key={data._id.$oid}>
-                    <CreateSmallTab>
-                        <i className="fa-solid fa-trash"></i>
-                    </CreateSmallTab>
+                    <FlexWrapSpaceB>
+                        <CreateSmallTab>
+                            <i className="fa-solid fa-trash"></i>
+                        </CreateSmallTab>
+                        <CreateSmallTab>
+                        <i className="fa-solid fa-pen"></i>
+                        </CreateSmallTab>
+                    </FlexWrapSpaceB>
                     <Link to={`/task-details?id=${data._id.$oid}`}>
                       <TaskCard>
                           {data.deadline? <p><i className="fa-regular fa-clock"></i> {data.deadline}</p> : <p><i className="fa-regular fa-clock"></i> No deadline</p> }

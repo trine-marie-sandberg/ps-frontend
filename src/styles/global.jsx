@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     --color-primary: rgb(36, 43, 42);
     --color-secondary: rgb(182, 255, 175);
-    --color-tertiary: blue;
+    --color-tertiary: #a4fffa;
     --color-font: white;
     --color-warning: #301313;
     --color-contrast-light: rgb(40, 49, 48);
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     display: block;
   }
   .active i {
-    color: #a4fffa !important;
+    color: var(--color-tertiary) !important;
   }
 `;
 
