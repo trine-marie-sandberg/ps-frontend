@@ -7,7 +7,7 @@ import TaskCards from "../../ui/cardswrap";
 import TaskCard from "../../ui/cards";
 import { CardsWrapp } from "../../ui/cardswrap/style";
 import FlexWrap, { FlexWrapSpaceB } from "../../ui/flexbox";
-import CreateCardBtn from "../../ui/newcardbtn";
+import CreatePrimaryBtn from "../../ui/btn-primary";
 
 const TasksPage = () => {
 
@@ -18,7 +18,7 @@ const TasksPage = () => {
         <PageWrap>
             <FlexWrapSpaceB>
                 <h1>Tasks</h1>
-                <CreateCardBtn>Create new task <i className="fa-regular fa-pen-to-square"></i></CreateCardBtn>
+                <CreatePrimaryBtn>Create new task <i className="fa-regular fa-pen-to-square"></i></CreatePrimaryBtn>
             </FlexWrapSpaceB>
             <div>
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
