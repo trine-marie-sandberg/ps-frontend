@@ -11,7 +11,6 @@ import PageWrapper from "../../ui/pagewrapper";
 
 const TasksPage = () => {
 
-    const {items, status} = useSelector(state => state.tasks);
     const { data, error, isLoading } = useGetAllTasksQuery();
 
     return(
@@ -24,12 +23,12 @@ const TasksPage = () => {
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
                 <>
                   <CardsWrapp>{data?.map(data => 
-                    <TaskCard key={data._id.$oid}>
-                        <Link to={`/task-details/${data._id.$oid}`}>
+                    <Link to={`/task-details?id=${data._id.$oid}`} key={data._id.$oid}>
+                      <TaskCard>
                           {data.deadline? <p><i className="fa-regular fa-clock"></i> {data.deadline}</p> : <p><i className="fa-regular fa-clock"></i> No deadline</p> }
                           <h2>{data.title}</h2>
-                        </Link>
-                    </TaskCard>
+                      </TaskCard>
+                    </Link>
                   )}
                   </CardsWrapp>
                 </>

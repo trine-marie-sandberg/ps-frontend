@@ -7,10 +7,14 @@ export const tasksApi = createApi({
         getAllTasks: builder.query({
             query: () => "tasks",
         }),
+        getSingleTask: builder.query({
+            query: (id) => `task/${id}`
+        }),
     }),
 });
 
 export const { useGetAllTasksQuery } = tasksApi;
+export const { useGetSingleTaskQuery } = tasksApi;
 
 //https://www.youtube.com/watch?v=X3cE7Hatlo8&list=PL63c_Ws9ecIRnNHCSqmIzfsMAYZrN71L6&index=9 
 //https://redux-toolkit.js.org/rtk-query/overview 
