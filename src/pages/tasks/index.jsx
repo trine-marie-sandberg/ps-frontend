@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux";
 import { PageWrap } from "../../components/pagewrapper/style";
 import { useGetAllTasksQuery } from "../../features/tasksapi";
+
+//UI
 import TaskCards from "../../ui/cardswrap";
 import TaskCard from "../../ui/cards";
 import { CardsWrapp } from "../../ui/cardswrap/style";
+import FlexWrap, { FlexWrapSpaceB } from "../../ui/flexbox";
+import CreateCardBtn from "../../ui/newcardbtn";
 
 const TasksPage = () => {
 
@@ -12,7 +16,10 @@ const TasksPage = () => {
     console.log(data)
     return(
         <PageWrap>
-            <h1>Tasks</h1>
+            <FlexWrapSpaceB>
+                <h1>Tasks</h1>
+                <CreateCardBtn>Create new task <i className="fa-regular fa-pen-to-square"></i></CreateCardBtn>
+            </FlexWrapSpaceB>
             <div>
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
                 <>
