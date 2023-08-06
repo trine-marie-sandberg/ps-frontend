@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const PageWrap = styled.div`
+  const Pagewrap = styled.div`
   min-height: 100%;
   margin: ${(props) => props.theme.sizes.xs} auto;
   background-color: ${(props) => props.theme.color.dark};
@@ -11,3 +11,5 @@ export const PageWrap = styled.div`
    padding : 16px 0;
   }
 `;
+
+export default Pagewrap

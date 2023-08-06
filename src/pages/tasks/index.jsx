@@ -1,21 +1,21 @@
 import { useSelector } from "react-redux";
-import { PageWrap } from "../../components/pagewrapper/style";
 import { useGetAllTasksQuery } from "../../features/tasksapi";
+import { Link } from "react-router-dom";
 
 //UI
-import TaskCards from "../../ui/cardswrap";
 import TaskCard from "../../ui/cards";
 import { CardsWrapp } from "../../ui/cardswrap/style";
 import FlexWrap, { FlexWrapSpaceB } from "../../ui/flexbox";
 import CreatePrimaryBtn from "../../ui/btn-primary";
+import PageWrapper from "../../ui/pagewrapper";
 
 const TasksPage = () => {
 
     const {items, status} = useSelector(state => state.tasks);
     const { data, error, isLoading } = useGetAllTasksQuery();
-    console.log(data)
+
     return(
-        <PageWrap>
+        <PageWrapper>
             <FlexWrapSpaceB>
                 <h1>Tasks</h1>
                 <CreatePrimaryBtn>Create new task <i className="fa-regular fa-pen-to-square"></i></CreatePrimaryBtn>
@@ -24,16 +24,18 @@ const TasksPage = () => {
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
                 <>
                   <CardsWrapp>{data?.map(data => 
-                  <TaskCard key={data._id.$oid}>
-                    <h2>{data.title}</h2>
-                    <p>{data._id.$oid}</p>
-                  </TaskCard>
+                    <TaskCard key={data._id.$oid}>
+                        <Link to={`/task-details/${data._id.$oid}`}>
+                          {data.deadline? <p><i className="fa-regular fa-clock"></i> {data.deadline}</p> : <p><i className="fa-regular fa-clock"></i> No deadline</p> }
+                          <h2>{data.title}</h2>
+                        </Link>
+                    </TaskCard>
                   )}
                   </CardsWrapp>
                 </>
                 )}
             </div>
-        </PageWrap>
+        </PageWrapper>
     )
 }
 

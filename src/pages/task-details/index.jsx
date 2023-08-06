@@ -1,11 +1,10 @@
 import PageWrapper from "../../ui/pagewrapper";
 
 
-export default function HomePage() {
-
+export default function TaskDetails() {
     return(
         <PageWrapper>
-            <h1>Project Situation</h1>
+            <h1>Task details</h1>
         </PageWrapper>
     )
 }

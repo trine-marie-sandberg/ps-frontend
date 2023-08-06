@@ -1,10 +1,11 @@
-import { PageWrap } from "../../components/pagewrapper/style";
+import PageWrapper from "../../ui/pagewrapper";
+
 
 export function ShoppingListPage() {
 
     return(
-        <PageWrap>
+        <PageWrapper>
             <h1>Shopping list</h1>
-        </PageWrap>
+        </PageWrapper>
     )
 }

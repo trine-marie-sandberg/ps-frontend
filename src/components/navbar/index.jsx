@@ -19,7 +19,7 @@ export function NavBar() {
                 </Li>
                 <Li>
                     <NavLink to="shopping-list" aria-label="Shopping list">
-                    <I className="fa-solid fa-list-check"></I>
+                    <I className="fa-solid fa-cart-shopping"></I>
                        <HoverText>Shopping-list</HoverText>
                     </NavLink>
                 </Li>

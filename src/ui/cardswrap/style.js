@@ -6,4 +6,8 @@ export const CardsWrapp = styled.div`
   grid-column-gap: 6px;
   grid-row-gap: 6px;
   border-radius: ${(props) => props.theme.sizes.borderRadius};
+  & a {
+    color: ${(props) => props.theme.color.font};
+    text-decoration: none;
+  }
 `;
