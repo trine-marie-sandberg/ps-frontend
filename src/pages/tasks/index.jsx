@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
 import { PageWrap } from "../../components/pagewrapper/style";
 import { useGetAllTasksQuery } from "../../features/tasksapi";
+import TaskCards from "../../ui/cardswrap";
+import TaskCard from "../../ui/cards";
+import { CardsWrapp } from "../../ui/cardswrap/style";
 
 const TasksPage = () => {
 
@@ -13,13 +16,13 @@ const TasksPage = () => {
             <div>
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
                 <>
-                  <div>{data?.map(data => 
-                  <div key={data._id}>
+                  <CardsWrapp>{data?.map(data => 
+                  <TaskCard key={data._id.$oid}>
                     <h2>{data.title}</h2>
-                    <p>test</p>
-                  </div>
+                    <p>{data._id.$oid}</p>
+                  </TaskCard>
                   )}
-                  </div>
+                  </CardsWrapp>
                 </>
                 )}
             </div>
