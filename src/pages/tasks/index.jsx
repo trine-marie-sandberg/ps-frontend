@@ -10,6 +10,9 @@ import CreatePrimaryBtn from "../../ui/btn-primary";
 import PageWrapper from "../../ui/pagewrapper";
 import CreatePlussBtn from "../../ui/btn-pluss";
 import CreateSmallTab from "../../ui/tab-small";
+import { FormContainer } from "../../ui/form-container/style";
+import { TaskForm } from "../../components/new-task-form";
+import SetVisibility from "../../components/visibility";
 
 const TasksPage = () => {
 
@@ -19,7 +22,10 @@ const TasksPage = () => {
         <PageWrapper>
             <FlexWrapSpaceB>
                 <h1>Tasks</h1>
-                <CreatePlussBtn><i className="fa-solid fa-plus"></i></CreatePlussBtn>
+                <CreatePlussBtn>
+
+                </CreatePlussBtn>
+
             </FlexWrapSpaceB>
             <div>
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
