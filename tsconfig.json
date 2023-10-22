@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+      "lib": ["es5", "es2015.promise", "dom", "es2015"],
+      "target": "ES6",
+      "module": "es2015",
+      "moduleResolution": "node",
+      "outDir": "./build/",
+      "rootDir": ".",
+      "strict": true,
+      "esModuleInterop": true,
+      "composite": true,
+      "declaration": true,
+      "declarationMap": true,
+      "sourceMap": true,
+      "jsx": "react",
+      "noImplicitAny": false,
+    },
+    "include": ["./src", "tsconfig.json"],
+    "exclude": ["node_modules/"]
+  }
+  //Fix for error "No inputs were found in config file"
+  //https://www.typescriptlang.org/tsconfig#rootDir 
+
+  //Fix for "--jsx is not set"
+  //https://www.totaltypescript.com/cannot-use-jsx-unless-the-jsx-flag-is-provided 
+
+  //Fix for error "How to fix error TS7016: Could not find a declaration file for module ‘XYZ’. ‘file.js’ implicitly has an ‘any’ type"
+  //https://pjausovec.medium.com/how-to-fix-error-ts7016-could-not-find-a-declaration-file-for-module-xyz-has-an-any-type-ecab588800a8

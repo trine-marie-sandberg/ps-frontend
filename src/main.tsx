@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+import App from './App';
 import Theme from './styles/theme.jsx';
 import GlobalStyle from './styles/global.jsx';
 
@@ -22,7 +22,11 @@ const store = configureStore({
 });
 store.dispatch(tasksFetch());
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+//Create root with TypeScript (tsx)
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement,
+);
+root.render(
   <React.StrictMode>
     <Theme>
       <GlobalStyle />
@@ -31,4 +35,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Provider>
     </Theme>
   </React.StrictMode>
-)
+);
+
+//Create root with JavaScript (jsx)
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <React.StrictMode>
+//     <Theme>
+//       <GlobalStyle />
+//       <Provider store={store}>
+//         <App />
+//       </Provider>
+//     </Theme>
+//   </React.StrictMode>
+// )
