@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { SharedComponentProps } from "../shared-props";
 
-export const Nav =  styled.nav`
+export const Nav = styled.nav<SharedComponentProps>`
   color: ${(props) => props.theme.color.font};
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 `;
-export const Head = styled.header`
+export const Head = styled.header<SharedComponentProps>`
   padding: ${(props) => props.theme.sizes.sm};
   display: flex;
   justify-content: space-evenly;
@@ -20,14 +21,16 @@ export const Ul = styled.ul`
 `;
 export const Li = styled.li`
   padding: 5px;
+
   & :hover p {
     display: block;
   }
+
   & a {
     color: white;
   }
 `;
-export const I = styled.i`
+export const I = styled.i<SharedComponentProps>`
   font-size: ${(props) => props.theme.sizes.med};
   padding: 5px;
   color: ${(props) => props.theme.color.secondary};

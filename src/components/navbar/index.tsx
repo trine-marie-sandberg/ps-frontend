@@ -1,14 +1,9 @@
 import React from "react";
-import { styled } from "styled-components";
 import { Nav, Ul, Li, I, HoverText } from "./style";
 import { NavLink } from "react-router-dom";
 
-const Button = styled.button`
-  background-color: ${(props) => props.theme.color.secondary};
-`;
-
 export function NavBar() {
-    return(
+    return (
         <Nav>
             <Ul>
                 <Li>
@@ -19,8 +14,8 @@ export function NavBar() {
                 </Li>
                 <Li>
                     <NavLink to="shopping-list" aria-label="Shopping list">
-                    <I className="fa-solid fa-cart-shopping"></I>
-                       <HoverText>Shopping-list</HoverText>
+                        <I className="fa-solid fa-cart-shopping"></I>
+                        <HoverText>Shopping-list</HoverText>
                     </NavLink>
                 </Li>
                 <Li>
@@ -31,5 +26,5 @@ export function NavBar() {
                 </Li>
             </Ul>
         </Nav>
-    )
+    );
 }
