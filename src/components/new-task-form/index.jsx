@@ -5,7 +5,7 @@ export function TaskForm(show) {
     const [title, setTitle] = useState('');
     const [descriptions, setDescription] = useState('');
     const [urls, setUrls] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(0);
     const [category, setCategory] = useState('');
     const [deadline, setDeadline] = useState('');
     const [author, setAuthor] = useState('');
@@ -39,7 +39,7 @@ export function TaskForm(show) {
       setDeadline("");
       setAuthor("");
       setUrls("");
-      setPrice("");
+      setPrice(0);
     };
 
     function close() {
@@ -114,7 +114,7 @@ export function TaskForm(show) {
         <div className="form-field">
           <label htmlFor="price">Price:</label>
           <input
-            type="text"
+            type="number"
             id="price"
             value={price}
             onChange={(event) => setPrice(event.target.value)}
