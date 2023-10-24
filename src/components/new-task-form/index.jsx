@@ -23,7 +23,8 @@ export function TaskForm(props) {
         deadline,
         author,
         urls,
-        price
+        price,
+        stamp: Date.now() + Math.random(),
       }
       const postOptions = {
         method: 'POST',
@@ -33,9 +34,9 @@ export function TaskForm(props) {
         }
       }
       //For demo app👇
-      localStorage.setItem(Date.now(), JSON.stringify(newTask));
-      const response = await fetch("http://10.0.0.68:5000/add/", postOptions);
+      localStorage.setItem(Date.now() + title, JSON.stringify(newTask));
 
+      const response = await fetch("http://10.0.0.68:5000/add/", postOptions);
       const json = await response.json();
       setTitle("");
       setDescription("");
