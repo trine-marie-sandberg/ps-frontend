@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form } from './style';
+import { CloseBtn, CloseWrap, Form, Input, InputLabelWrap, Label, LabelText, SubmitBtn, TextArea } from './style';
 
 export function TaskForm(props) {
 
@@ -51,77 +51,85 @@ export function TaskForm(props) {
   
     return (
       <Form onSubmit={handleSubmit} id='new-task-form'>
-        <p onClick={close} className='close-btn'>Close X</p>
-        <div className="form-field">
-          <label htmlFor="title">Title:</label>
-          <input
+        <CloseWrap>
+          <h2>Create new task</h2>
+          <CloseBtn 
+            onClick={close}
+            aria-label='Close the create new task form'
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </CloseBtn>
+        </CloseWrap>
+        <InputLabelWrap>
+          <Label>
+            <LabelText>Title</LabelText>
+            <Input
             type="text"
-            id="title"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-        </div>
-  
-        <div className="form-field">
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
+          </Label>
+        </InputLabelWrap>
+        <InputLabelWrap>
+          <Label>
+            <LabelText>Description</LabelText>
+            <TextArea
             value={descriptions}
             onChange={(event) => setDescription(event.target.value)}
           />
-        </div>
-  
-        <div className="form-field">
-          <label htmlFor="category">Category:</label>
-          <input
+          </Label>
+        </InputLabelWrap>
+        <InputLabelWrap>
+          <Label>
+            <LabelText>Category</LabelText>
+            <Input
             type="text"
-            id="category"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
           />
-        </div>
-  
-        <div className="form-field">
-          <label htmlFor="deadline">Deadline:</label>
-          <input
+          </Label>
+        </InputLabelWrap>
+        <InputLabelWrap>
+          <Label htmlFor="deadline">
+            <LabelText>Deadline</LabelText>
+            <Input
             type="date"
-            id="deadline"
             value={deadline}
             onChange={(event) => setDeadline(event.target.value)}
           />
-        </div>
-  
-        <div className="form-field">
-          <label htmlFor="author">Author:</label>
-          <input
+          </Label>
+        </InputLabelWrap>
+        <InputLabelWrap>
+          <Label>
+            <LabelText>Author</LabelText>
+            <Input
             type="text"
-            id="author"
             value={author}
             onChange={(event) => setAuthor(event.target.value)}
           />
-        </div>
-
-        <div className="form-field">
-          <label htmlFor="urls">Urls:</label>
-          <input
+          </Label>
+        </InputLabelWrap>
+        <InputLabelWrap>
+          <Label>
+            <LabelText>Urls</LabelText>
+            <Input
             type="text"
-            id="urls"
             value={urls}
             onChange={(event) => setUrls(event.target.value)}
           />
-        </div>
-
-        <div className="form-field">
-          <label htmlFor="price">Price:</label>
-          <input
+          </Label>
+        </InputLabelWrap>
+        <InputLabelWrap>
+          <Label>
+            <LabelText>Price</LabelText>
+            <Input
             type="number"
-            id="price"
             value={price}
             onChange={(event) => setPrice(event.target.value)}
           />
-        </div>
-  
-        <button type="submit">Submit</button>
+          </Label>
+        </InputLabelWrap>
+        <SubmitBtn type="submit">Submit</SubmitBtn>
       </Form>
     );
   }
