@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
   top: 0;
   left: 0;
   margin: 0;
-  min-height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.751);
+  min-height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.950);
 `;

@@ -40,6 +40,7 @@ export const Input = styled.input`
 `;
 export const TextArea = styled.textarea`
   border-radius: 5px;
+  min-height: 65px;
   padding: 10px;
   margin: 5px;
   border: none;
