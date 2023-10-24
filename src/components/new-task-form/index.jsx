@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Form } from './style';
 
 export function TaskForm(props) {
 
@@ -49,7 +50,7 @@ export function TaskForm(props) {
     }
   
     return (
-      <form onSubmit={handleSubmit} id='new-task-form'>
+      <Form onSubmit={handleSubmit} id='new-task-form'>
         <p onClick={close} className='close-btn'>Close X</p>
         <div className="form-field">
           <label htmlFor="title">Title:</label>
@@ -121,6 +122,6 @@ export function TaskForm(props) {
         </div>
   
         <button type="submit">Submit</button>
-      </form>
+      </Form>
     );
   }
