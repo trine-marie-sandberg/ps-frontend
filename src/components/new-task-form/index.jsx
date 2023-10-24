@@ -32,10 +32,11 @@ export function TaskForm(props) {
             'Content-Type': 'application/json'    
         }
       }
+      //For demo app👇
+      localStorage.setItem(Date.now(), JSON.stringify(newTask));
       const response = await fetch("http://10.0.0.68:5000/add/", postOptions);
-      const json = await response.json();
-      // console.log(`THE RETURN OBJECT: ${json}`)
 
+      const json = await response.json();
       setTitle("");
       setDescription("");
       setCategory("");
@@ -43,6 +44,7 @@ export function TaskForm(props) {
       setAuthor("");
       setUrls("");
       setPrice(0);
+      alert("Submitted")
     };
 
     function close() {
@@ -50,7 +52,7 @@ export function TaskForm(props) {
     }
   
     return (
-      <Form onSubmit={handleSubmit} id='new-task-form'>
+      <Form onSubmit={handleSubmit}>
         <CloseWrap>
           <h2>Create new task</h2>
           <CloseBtn 
