@@ -23,9 +23,7 @@ const TasksPage = () => {
             <FlexWrapSpaceB>
                 <h1>Tasks</h1>
                 <CreatePlussBtn>
-
                 </CreatePlussBtn>
-
             </FlexWrapSpaceB>
             <div>
                 { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (

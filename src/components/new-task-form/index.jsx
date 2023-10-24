@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function TaskForm(show) {
+export function TaskForm(props) {
 
     const [title, setTitle] = useState('');
     const [descriptions, setDescription] = useState('');
@@ -9,6 +9,8 @@ export function TaskForm(show) {
     const [category, setCategory] = useState('');
     const [deadline, setDeadline] = useState('');
     const [author, setAuthor] = useState('');
+
+    const setShow = props.children;
   
     const handleSubmit = async (event) => {
 
@@ -43,10 +45,7 @@ export function TaskForm(show) {
     };
 
     function close() {
-      const formContainer = document.getElementById("form-container");
-      const form = document.getElementById("new-task-form");
-      form.style.display = "none";
-      formContainer.style.display = "none";
+      setShow(false);
     }
   
     return (
