@@ -1,5 +1,5 @@
 import { useGetAllTasksQuery, useGetSingleTaskQuery } from "../../features/tasksapi";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import PageWrapper from "../../ui/pagewrapper";
 import { useSelector } from "react-redux";
 
@@ -11,6 +11,7 @@ export default function TaskDetails() {
     console.log(data)
     return(
         <PageWrapper>
+          <Link to={"/tasks"}>Back</Link>
             <div>
                 {isLoading ? <p>loading</p> : error ? <p>error {error.data}</p> : 
                 <>
