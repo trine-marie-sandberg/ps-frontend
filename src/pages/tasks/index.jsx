@@ -19,16 +19,16 @@ const TasksPage = () => {
 
     const { data, error, isLoading } = useGetAllTasksQuery();
     //For demo app👇
-    const [ storedTasks, setStoredTasks ] = useState([]);
-    const getStoredTasks = {...localStorage};
-    let objectKeys = Object.keys(getStoredTasks);
-    let loopArray = [];
-    useEffect(() => {
-        for(let i = 0; i < objectKeys.length; i++) {
-            loopArray.push(JSON.parse(localStorage.getItem(objectKeys[i])));
-        }
-        setStoredTasks(loopArray);
-    }, [])
+    // const [ storedTasks, setStoredTasks ] = useState([]);
+    // const getStoredTasks = {...localStorage};
+    // let objectKeys = Object.keys(getStoredTasks);
+    // let loopArray = [];
+    // useEffect(() => {
+    //     for(let i = 0; i < objectKeys.length; i++) {
+    //         loopArray.push(JSON.parse(localStorage.getItem(objectKeys[i])));
+    //     }
+    //     setStoredTasks(loopArray);
+    // }, [])
     //👆
     return(
         <PageWrapper>
@@ -63,7 +63,7 @@ const TasksPage = () => {
                 )}
             </div>
             {/* For demo app👇 */}
-            <CardsWrapp>
+            {/* <CardsWrapp>
                 {storedTasks.map(data => 
                 <div key={Date.now() + Math.random()}>
                     <FlexWrapSpaceB>
@@ -82,7 +82,7 @@ const TasksPage = () => {
                     </Link>
                 </div>
                 )}
-            </CardsWrapp>
+            </CardsWrapp> */}
             {/* 👆 */}
         </PageWrapper>
     )
