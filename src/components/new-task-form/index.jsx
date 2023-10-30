@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CloseBtn, CloseWrap, Form, Input, InputLabelWrap, Label, LabelText, SubmitBtn, TextArea } from './style';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../features/tasksSlice';
 
 export function TaskForm(props) {
 
@@ -12,6 +14,7 @@ export function TaskForm(props) {
     const [author, setAuthor] = useState('');
 
     const setShow = props.children;
+    const dispatch = useDispatch();
   
     const handleSubmit = async (event) => {
 
@@ -33,6 +36,8 @@ export function TaskForm(props) {
             'Content-Type': 'application/json'    
         }
       }
+      dispatch(addTask(newTask));
+
       //For demo app👇
       //localStorage.setItem(Date.now() + title, JSON.stringify(newTask));
 

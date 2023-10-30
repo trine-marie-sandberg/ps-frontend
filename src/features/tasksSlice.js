@@ -22,9 +22,14 @@ export const tasksFetch = createAsyncThunk(
 const tasksSlice = createSlice({
     name: "tasks",
     initialState,
-    reducers: {},
+    reducers: {
+        addTask(state, action) {
+            state.tasks.push(action.payload)
+        }
+    },
 });
 export default tasksSlice.reducer;
+export const { addTask } = tasksSlice.actions;
 
 export const taskFetch = createAsyncThunk(
     "task/taskFetch",

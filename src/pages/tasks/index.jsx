@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useGetAllTasksQuery } from "../../features/tasksapi";
 import { Link } from "react-router-dom";
 
@@ -6,18 +5,16 @@ import { Link } from "react-router-dom";
 import TaskCard from "../../ui/cards";
 import { CardsWrapp } from "../../ui/cardswrap/style";
 import FlexWrap, { FlexWrapSpaceB } from "../../ui/flexbox";
-import CreatePrimaryBtn from "../../ui/btn-primary";
 import PageWrapper from "../../ui/pagewrapper";
 import CreatePlussBtn from "../../ui/btn-pluss";
 import CreateSmallTab from "../../ui/tab-small";
-import { FormContainer } from "../../ui/form-container/style";
-import { TaskForm } from "../../components/new-task-form";
-import SetVisibility from "../../components/visibility";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const TasksPage = () => {
-
     const { data, error, isLoading } = useGetAllTasksQuery();
+    const { tasks, status } = useSelector(state => state.tasks);
+    //FORTSETT: https://www.youtube.com/watch?v=uRoJJKJMbXQ&list=PL63c_Ws9ecIRnNHCSqmIzfsMAYZrN71L6&index=12 
+    console.log(tasks)
     //For demo app👇
     // const [ storedTasks, setStoredTasks ] = useState([]);
     // const getStoredTasks = {...localStorage};
