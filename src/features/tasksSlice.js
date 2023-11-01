@@ -22,11 +22,11 @@ export const tasksFetch = createAsyncThunk(
 const tasksSlice = createSlice({
     name: "tasks",
     initialState,
-    // reducers: {
-    //     addTask(state, action) {
-    //         state.tasks.push(action.payload)
-    //     }
-    // },
+    reducers: {
+        addTask(state, action) {
+            state.tasks.push(action.payload)
+        }
+    },
     //https://www.youtube.com/watch?v=I2aM7YcOXDY
     extraReducers: (builder) => {
         builder.addCase(tasksFetch.pending, (state) => {
