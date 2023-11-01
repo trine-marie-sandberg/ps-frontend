@@ -1,5 +1,8 @@
 import { useGetAllTasksQuery } from "../../features/tasksapi";
 import { Link } from "react-router-dom";
+import { tasksFetch } from "../../features/tasksSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 //UI
 import TaskCard from "../../ui/cards";
@@ -8,13 +11,15 @@ import FlexWrap, { FlexWrapSpaceB } from "../../ui/flexbox";
 import PageWrapper from "../../ui/pagewrapper";
 import CreatePlussBtn from "../../ui/btn-pluss";
 import CreateSmallTab from "../../ui/tab-small";
-import { useSelector } from "react-redux";
 
 const TasksPage = () => {
-    const { data, error, isLoading } = useGetAllTasksQuery();
-    const { tasks, status } = useSelector(state => state.tasks);
+    //const { data, error, isLoading } = useGetAllTasksQuery();
+    const tasks = useSelector(state => state.tasks);
     //FORTSETT: https://www.youtube.com/watch?v=uRoJJKJMbXQ&list=PL63c_Ws9ecIRnNHCSqmIzfsMAYZrN71L6&index=12 
-    console.log(tasks)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(tasksFetch());
+    }, []);
     //For demo app👇
     // const [ storedTasks, setStoredTasks ] = useState([]);
     // const getStoredTasks = {...localStorage};
@@ -35,9 +40,9 @@ const TasksPage = () => {
                 </CreatePlussBtn>
             </FlexWrapSpaceB>
             <div>
-                { isLoading ? <p>Loading</p> : error ? <p>error {error.data}</p> : (
+                { tasks.loading ? <p>Loading</p> : tasks.error ? <p>error {error.data}</p> : (
                 <>
-                  <CardsWrapp>{data?.map(data => 
+                  <CardsWrapp>{tasks.tasks?.map(data => 
                   <div key={data._id.$oid}>
                     <FlexWrapSpaceB>
                         <CreateSmallTab>
