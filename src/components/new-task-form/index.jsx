@@ -12,11 +12,9 @@ export function TaskForm(props) {
     const [category, setCategory] = useState('');
     const [deadline, setDeadline] = useState('');
     const [author, setAuthor] = useState('');
-    const [stamp, setStamp] = useState('');
 
     const setShow = props.children;
     const dispatch = useDispatch();
-    useEffect(() => setStamp(Date.now() + Math.random()), [])
     const handleSubmit = async (event) => {
 
       event.preventDefault();
@@ -28,7 +26,7 @@ export function TaskForm(props) {
         author,
         urls,
         price,
-        stamp,
+        stamp: Date.now() + Math.random(),
       }
       const postOptions = {
         method: 'POST',
