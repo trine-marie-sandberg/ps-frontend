@@ -12,10 +12,11 @@ export function TaskForm(props) {
     const [category, setCategory] = useState('');
     const [deadline, setDeadline] = useState('');
     const [author, setAuthor] = useState('');
+    const [stamp, setStamp] = useState('');
 
     const setShow = props.children;
     const dispatch = useDispatch();
-  
+    useEffect(() => setStamp(Date.now() + Math.random()), [])
     const handleSubmit = async (event) => {
 
       event.preventDefault();
@@ -27,7 +28,7 @@ export function TaskForm(props) {
         author,
         urls,
         price,
-        stamp: Date.now() + Math.random(),
+        stamp,
       }
       const postOptions = {
         method: 'POST',
@@ -36,13 +37,22 @@ export function TaskForm(props) {
             'Content-Type': 'application/json'    
         }
       }
-      dispatch(addTask(newTask));
 
       //For demo app👇
       //localStorage.setItem(Date.now() + title, JSON.stringify(newTask));
 
       const response = await fetch("http://10.0.0.68:5000/add/", postOptions);
       const json = await response.json();
+      dispatch(addTask({
+        title,
+        descriptions,
+        category,
+        deadline,
+        author,
+        urls,
+        price,
+        _id: {$oid: json._id.$oid} 
+      }));
       setTitle("");
       setDescription("");
       setCategory("");
@@ -50,7 +60,6 @@ export function TaskForm(props) {
       setAuthor("");
       setUrls("");
       setPrice(0);
-      alert("Submitted")
     };
 
     function close() {

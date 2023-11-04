@@ -1,6 +1,6 @@
 import { useGetAllTasksQuery } from "../../features/tasksapi";
 import { Link } from "react-router-dom";
-import { TaskDelete, tasksFetch } from "../../features/tasksSlice";
+import { TaskDelete, deleteTask, tasksFetch } from "../../features/tasksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -23,6 +23,7 @@ const TasksPage = () => {
     }, []);
     function handleDelete(id) {
         dispatch(TaskDelete(id))
+        dispatch(deleteTask(id))
     }
     //For demo app👇
     // const [ storedTasks, setStoredTasks ] = useState([]);

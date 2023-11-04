@@ -37,8 +37,10 @@ const tasksSlice = createSlice({
         addTask(state, action) {
             state.tasks.push(action.payload)
         },
-        deleteTask(state, action, id) {
-            state.tasks.filter(id);
+        deleteTask(state, action) {
+            const id = action.payload;
+            const filtered = state.tasks.filter((tasks) => tasks._id.$oid !== id);
+            console.log(state.tasks)
         }
     },
     //https://www.youtube.com/watch?v=I2aM7YcOXDY
@@ -59,7 +61,7 @@ const tasksSlice = createSlice({
     }
 });
 export default tasksSlice.reducer;
-export const { addTask } = tasksSlice.actions;
+export const { addTask, deleteTask } = tasksSlice.actions;
 
 export const taskFetch = createAsyncThunk(
     "task/taskFetch",
