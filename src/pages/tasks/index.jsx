@@ -1,6 +1,6 @@
 import { useGetAllTasksQuery } from "../../features/tasksapi";
 import { Link } from "react-router-dom";
-import { tasksFetch } from "../../features/tasksSlice";
+import { TaskDelete, tasksFetch } from "../../features/tasksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -11,6 +11,7 @@ import FlexWrap, { FlexWrapSpaceB } from "../../ui/flexbox";
 import PageWrapper from "../../ui/pagewrapper";
 import CreatePlussBtn from "../../ui/btn-pluss";
 import CreateSmallTab from "../../ui/tab-small";
+import { BtnHideStyle } from "./style";
 
 const TasksPage = () => {
     //const { data, error, isLoading } = useGetAllTasksQuery();
@@ -20,6 +21,9 @@ const TasksPage = () => {
     useEffect(() => {
         dispatch(tasksFetch());
     }, []);
+    function handleDelete(id) {
+        dispatch(TaskDelete(id))
+    }
     //For demo app👇
     // const [ storedTasks, setStoredTasks ] = useState([]);
     // const getStoredTasks = {...localStorage};
@@ -41,16 +45,22 @@ const TasksPage = () => {
             </FlexWrapSpaceB>
             <div>
                 { tasks.loading ? <p>Loading</p> : tasks.error ? <p>error {error.data}</p> : (
-                <>
+                <div>
                   <CardsWrapp>{tasks.tasks?.map(data => 
                   <div key={data._id.$oid}>
                     <FlexWrapSpaceB>
-                        <CreateSmallTab>
-                            <i className="fa-solid fa-trash"></i>
-                        </CreateSmallTab>
-                        <CreateSmallTab>
-                        <i className="fa-solid fa-pen"></i>
-                        </CreateSmallTab>
+                        <BtnHideStyle
+                          onClick={() => handleDelete(data._id.$oid)}
+                        >
+                            <CreateSmallTab>
+                                <i className="fa-solid fa-trash"></i>
+                            </CreateSmallTab>
+                        </BtnHideStyle>
+                        <BtnHideStyle>
+                            <CreateSmallTab>
+                            <i className="fa-solid fa-pen"></i>
+                            </CreateSmallTab>
+                        </BtnHideStyle>
                     </FlexWrapSpaceB>
                     <Link to={`/task-details?id=${data._id.$oid}`}>
                       <TaskCard>
@@ -61,7 +71,7 @@ const TasksPage = () => {
                   </div>  
                   )}
                   </CardsWrapp>
-                </>
+                </div>
                 )}
             </div>
             {/* For demo app👇 */}

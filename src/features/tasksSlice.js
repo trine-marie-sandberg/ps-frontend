@@ -7,7 +7,7 @@ const initialState = {
     loading: "loading content",
     error: "An error occured",
 }
-//💡createAsyncThunk() accepts 3 paramenters: action-type, function, options
+//💡FETCH
 export const tasksFetch = createAsyncThunk(
     "tasks/tasksFetch",
     async () => {
@@ -19,12 +19,26 @@ export const tasksFetch = createAsyncThunk(
         } 
     }
 );
+export const TaskDelete = createAsyncThunk(
+    "task/taskDelete",
+    async (id) => {
+        try {
+            const response = await axios.delete("http://10.0.0.68:5000/delete/" + id)
+        } catch(error) {
+            console.log(error);
+            console.log("id: " + id)
+        }
+    }
+)
 const tasksSlice = createSlice({
     name: "tasks",
     initialState,
     reducers: {
         addTask(state, action) {
             state.tasks.push(action.payload)
+        },
+        deleteTask(state, action, id) {
+            state.tasks.filter(id);
         }
     },
     //https://www.youtube.com/watch?v=I2aM7YcOXDY
