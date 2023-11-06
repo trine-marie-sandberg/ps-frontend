@@ -40,7 +40,7 @@ const tasksSlice = createSlice({
         deleteTask(state, action) {
             const id = action.payload;
             const filtered = state.tasks.filter((tasks) => tasks._id.$oid !== id);
-            console.log(state.tasks)
+            state.tasks = filtered;
         }
     },
     //https://www.youtube.com/watch?v=I2aM7YcOXDY
