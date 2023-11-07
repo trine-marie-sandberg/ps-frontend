@@ -30,17 +30,33 @@ export const TaskDelete = createAsyncThunk(
         }
     }
 )
+export const TaskUpdate = createAsyncThunk(
+    "task/taskUpdate",
+    async (id) => {
+        try {
+            await axios.put("http://10.0.0.68:5000/update/" + id)
+        } catch(error) {
+            console.log(error)
+        }
+    }
+)
 const tasksSlice = createSlice({
     name: "tasks",
     initialState,
     reducers: {
         addTask(state, action) {
-            state.tasks.push(action.payload)
+            state.tasks.push(action.payload);
         },
         deleteTask(state, action) {
             const id = action.payload;
             const filtered = state.tasks.filter((tasks) => tasks._id.$oid !== id);
             state.tasks = filtered;
+        },
+        updateTask(state, action) {
+            const index = state.findIndex(item => item.id === action.payload.id);
+            const updateState = [...state];
+            return void(updateState[index].name = action.payload.name)
+            //https://stackoverflow.com/questions/75081232/updating-todo-list-in-react-native-todo-app-using-redux-redux-toolkit
         }
     },
     //https://www.youtube.com/watch?v=I2aM7YcOXDY
@@ -61,7 +77,7 @@ const tasksSlice = createSlice({
     }
 });
 export default tasksSlice.reducer;
-export const { addTask, deleteTask } = tasksSlice.actions;
+export const { addTask, deleteTask, updateTask } = tasksSlice.actions;
 
 export const taskFetch = createAsyncThunk(
     "task/taskFetch",
