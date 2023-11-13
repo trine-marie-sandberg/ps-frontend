@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import { CloseBtn, CloseWrap, Form, Input, InputLabelWrap, Label, LabelText, SubmitBtn, TextArea } from './style';
 import { useDispatch } from 'react-redux';
-import { addTask, updateTask } from '../../features/tasksSlice';
+import { TaskUpdate, addTask, updateTask } from '../../features/tasksSlice';
 
 export function TaskForm(props) {
 
-    const [title, setTitle] = useState('');
-    const [descriptions, setDescription] = useState('');
-    const [urls, setUrls] = useState('');
-    const [price, setPrice] = useState(0);
-    const [category, setCategory] = useState('');
-    const [deadline, setDeadline] = useState('');
-    const [author, setAuthor] = useState('');
-
-    const setShow = props.children;
+    const [ setShow, originalTask ] = props.children;
+    const [title, setTitle] = useState(originalTask.title);
+    const [descriptions, setDescription] = useState(originalTask.descriptions);
+    const [urls, setUrls] = useState(originalTask.urls);
+    const [price, setPrice] = useState(originalTask.price);
+    const [category, setCategory] = useState(originalTask.category);
+    const [deadline, setDeadline] = useState(originalTask.deadline);
+    const [author, setAuthor] = useState(originalTask.author);
     const dispatch = useDispatch();
+
     const handleSubmit = async (event) => {
 
       event.preventDefault();
-      const newTask = {
+      const updatedTask = {
         title,
         descriptions,
         category,
@@ -30,7 +30,7 @@ export function TaskForm(props) {
       }
       const postOptions = {
         method: 'POST',
-        body: JSON.stringify(newTask),
+        body: JSON.stringify(updatedTask),
         headers: {
             'Content-Type': 'application/json'    
         }
@@ -38,10 +38,7 @@ export function TaskForm(props) {
 
       //For demo app👇
       //localStorage.setItem(Date.now() + title, JSON.stringify(newTask));
-
-      const response = await fetch("http://10.0.0.68:5000/add/", postOptions);
-      const json = await response.json();
-      dispatch(updateTask({
+      dispatch(TaskUpdate({
         title,
         descriptions,
         category,
@@ -49,15 +46,8 @@ export function TaskForm(props) {
         author,
         urls,
         price,
-        _id: {$oid: json._id.$oid} 
+        _id: originalTask._id.$oid,
       }));
-      setTitle("");
-      setDescription("");
-      setCategory("");
-      setDeadline("");
-      setAuthor("");
-      setUrls("");
-      setPrice(0);
     };
 
     function close() {
@@ -67,7 +57,7 @@ export function TaskForm(props) {
     return (
       <Form onSubmit={handleSubmit}>
         <CloseWrap>
-          <h2>Create new task</h2>
+          <h2>Update task</h2>
           <CloseBtn 
             onClick={close}
             aria-label='Close the create new task form'

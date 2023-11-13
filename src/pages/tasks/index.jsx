@@ -1,8 +1,8 @@
 import { useGetAllTasksQuery } from "../../features/tasksapi";
 import { Link } from "react-router-dom";
-import { TaskDelete, deleteTask, tasksFetch } from "../../features/tasksSlice";
+import { TaskDelete, TaskUpdate, deleteTask, tasksFetch } from "../../features/tasksSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //UI
 import TaskCard from "../../ui/cards";
@@ -12,6 +12,7 @@ import PageWrapper from "../../ui/pagewrapper";
 import CreatePlussBtn from "../../ui/btn-pluss";
 import CreateSmallTab from "../../ui/tab-small";
 import { BtnHideStyle } from "./style";
+import CreateUpdateBtn from "../../ui/btn-update";
 
 const TasksPage = () => {
     //const { data, error, isLoading } = useGetAllTasksQuery();
@@ -24,6 +25,9 @@ const TasksPage = () => {
     function handleDelete(id) {
         dispatch(TaskDelete(id))
         dispatch(deleteTask(id))
+    }
+    function handleUpdate() {
+        console.log("click")
     }
     //For demo app👇
     // const [ storedTasks, setStoredTasks ] = useState([]);
@@ -56,11 +60,7 @@ const TasksPage = () => {
                                 <i className="fa-solid fa-trash"></i>
                             </CreateSmallTab>
                         </BtnHideStyle>
-                        <BtnHideStyle>
-                            <CreateSmallTab>
-                            <i className="fa-solid fa-pen"></i>
-                            </CreateSmallTab>
-                        </BtnHideStyle>
+                        <CreateUpdateBtn>{data}</CreateUpdateBtn>
                     </FlexWrapSpaceB>
                     <Link to={`/task-details?id=${data._id.$oid}`}>
                       <TaskCard>

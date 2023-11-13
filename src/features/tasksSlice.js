@@ -32,9 +32,10 @@ export const TaskDelete = createAsyncThunk(
 )
 export const TaskUpdate = createAsyncThunk(
     "task/taskUpdate",
-    async (id) => {
+    async (task) => {
         try {
-            await axios.put("http://10.0.0.68:5000/update/" + id)
+            console.log(task._id)
+            await axios.put(`http://10.0.0.68:5000/update/${task._id}`, task)
         } catch(error) {
             console.log(error)
         }
