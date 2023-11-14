@@ -49,6 +49,7 @@ export function TaskForm(props) {
         _id: originalTask._id.$oid,
       }));
     };
+    dispatch(updateTask(originalTask._id.$oid))
 
     function close() {
       setShow(false);

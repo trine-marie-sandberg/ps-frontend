@@ -54,9 +54,10 @@ const tasksSlice = createSlice({
             state.tasks = filtered;
         },
         updateTask(state, action) {
-            const index = state.findIndex(item => item.id === action.payload.id);
-            const updateState = [...state];
-            return void(updateState[index].name = action.payload.name)
+            const filtered = state.tasks.filter((task) => task._id.$oid !== action.payload);
+            
+            // state.tasks = filtered;
+            //state.tasks.push(action.payload)
             //test
             //Update task - fortsett
             //https://stackoverflow.com/questions/75081232/updating-todo-list-in-react-native-todo-app-using-redux-redux-toolkit
