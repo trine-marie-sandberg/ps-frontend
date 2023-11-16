@@ -55,7 +55,7 @@ const tasksSlice = createSlice({
         },
         updateTask(state, action) {
             const filtered = state.tasks.filter((task) => task._id.$oid !== action.payload);
-            
+            //..
             // state.tasks = filtered;
             //state.tasks.push(action.payload)
             //test
